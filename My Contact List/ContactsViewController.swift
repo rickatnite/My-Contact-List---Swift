@@ -9,12 +9,28 @@ import UIKit
 
 class ContactsViewController: UIViewController {
 
+    @IBOutlet weak var sgmtEditMode: UISegmentedControl!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var txtName: UITextField!
+    @IBOutlet weak var txtAddress: UITextField!
+    @IBOutlet weak var txtCity: UITextField!
+    @IBOutlet weak var txtState: UITextField!
+    @IBOutlet weak var txtZip: UITextField!
+    @IBOutlet weak var txtCell: UITextField!
+    @IBOutlet weak var txtPhone: UITextField!
+    @IBOutlet weak var txtEmail: UITextField!
+    @IBOutlet weak var lblBirthdate: UILabel!
+    @IBOutlet weak var btnChange: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.changeEditMode(self)
+        //Calls the changeEditMode method to ensure that the controls are set properly when the view loads.
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        //dispose of any resources that can be recreated
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +82,32 @@ class ContactsViewController: UIViewController {
         self.scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
     }
     
+    //called whenever the Segmented Control changes state and will change the controls as needed to reflect the state of the control.
+    @IBAction func changeEditMode(_ sender: Any) {
+        //All the properties are changed in the same way for each of the TextFields, so set up an Array object containing all the TextFields
+        let textFields: [UITextField] = [txtName, txtAddress, txtCity, txtState, txtZip, txtCell, txtPhone, txtEmail]
+        
+        //Check the value of the Segmented Control. Viewing is 0, and Editing is 1.
+        if sgmtEditMode.selectedSegmentIndex == 0 {
+            //Use a fast enumeration loop to go through all the TextFields in the array.
+            for textField in textFields {
+                textField.isEnabled = false
+                textField.borderStyle = UITextField.BorderStyle.none
+                //In view mode, the TextFields are disabled and the border is set to not be there
+            }
+            btnChange.isHidden = true
+            //The Change button should not be shown in view mode.
+        }
+        
+        //When switching to edit mode, the code is similar but the values are opposite. The TextFields are enabled, and the border is set to the Rounded Rect mode (the default). The button is hidden.
+        else if sgmtEditMode.selectedSegmentIndex == 1 {
+            for textField in textFields {
+                textField.isEnabled = true
+                textField.borderStyle = UITextField.BorderStyle.roundedRect
+            }
+            btnChange.isHidden = false
+        }
+    }
     
     
     

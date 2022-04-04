@@ -55,6 +55,9 @@
                                     <segment title="View"/>
                                     <segment title="Edit"/>
                                 </segments>
+                                <connections>
+                                    <action selector="changeEditMode:" destination="oQ4-ua-9wW" eventType="valueChanged" id="4Ef-uD-Con"/>
+                                </connections>
                             </segmentedControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="wLQ-bI-GP9">
                                 <rect key="frame" x="0.0" y="134" width="414" height="679"/>
@@ -225,7 +228,18 @@
                     </view>
                     <navigationItem key="navigationItem" title="Contact" id="3W6-Tb-C9L"/>
                     <connections>
+                        <outlet property="btnChange" destination="ZEe-z6-GfQ" id="aKA-Xb-xnC"/>
+                        <outlet property="lblBirthdate" destination="FyQ-Ys-ONC" id="jO6-aP-MUE"/>
                         <outlet property="scrollView" destination="wLQ-bI-GP9" id="tof-yb-b6y"/>
+                        <outlet property="sgmtEditMode" destination="aXb-T5-3PJ" id="W7w-Uo-Xdj"/>
+                        <outlet property="txtAddress" destination="Qho-SG-wMi" id="MVb-47-tQF"/>
+                        <outlet property="txtCell" destination="GM0-tD-e0g" id="jpU-GU-Dq4"/>
+                        <outlet property="txtCity" destination="AGP-zm-CQ0" id="wIg-QD-Dem"/>
+                        <outlet property="txtEmail" destination="Qq5-QI-Okm" id="9yQ-Pg-ZiQ"/>
+                        <outlet property="txtName" destination="bE4-Vb-FGZ" id="4yN-Tw-vOi"/>
+                        <outlet property="txtPhone" destination="Eft-EK-Hjd" id="NzD-YV-Pgg"/>
+                        <outlet property="txtState" destination="w91-QL-eAH" id="5xG-eQ-a4r"/>
+                        <outlet property="txtZip" destination="Ku2-90-mjC" id="gcw-9v-daJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oj7-Gm-gZo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
