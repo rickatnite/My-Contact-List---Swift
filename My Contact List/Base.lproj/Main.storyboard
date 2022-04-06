@@ -19,7 +19,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" selectedImage="gearshape" catalog="system" id="we2-fh-iqz" userLabel="Settings"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" selectedImage="gearshape" id="we2-fh-iqz" userLabel="Settings"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -35,7 +35,7 @@
                         <viewLayoutGuide key="safeArea" id="pI3-2b-7TE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" selectedImage="map" catalog="system" id="oJu-Pk-Uqj" userLabel="Map"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" selectedImage="map" id="oJu-Pk-Uqj" userLabel="Map"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SG4-Cd-E2d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -295,7 +295,7 @@
         <scene sceneID="1XD-Ho-7Fg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="S4y-Wn-oeO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Contacts" selectedImage="person.2.fill" catalog="system" id="Etv-LC-KPz" userLabel="Contacts"/>
+                    <tabBarItem key="tabBarItem" title="Contacts" image="person.2.fill" catalog="system" selectedImage="person.2.fill" id="Etv-LC-KPz" userLabel="Contacts"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xHN-aY-SLi">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
