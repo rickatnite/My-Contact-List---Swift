@@ -22,6 +22,12 @@ class ContactsViewController: UIViewController {
     @IBOutlet weak var lblBirthdate: UILabel!
     @IBOutlet weak var btnChange: UIButton!
     
+    
+    //functions to detect if the keyboard has been displayed and
+    //then move the scroll view and its contents enough
+    //so that the selected control is not covered.
+    //When the keyboard is dismissed, it then moves the content back to its original position.
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         self.changeEditMode(self)

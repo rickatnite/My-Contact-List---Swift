@@ -16,10 +16,51 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="83" translatesAutoresizingMaskIntoConstraints="NO" id="6Qz-bX-ME4">
+                                <rect key="frame" x="47" y="231.5" width="320" height="433.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort Order:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pi-eU-9qa">
+                                        <rect key="frame" x="117.5" y="0.0" width="85" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uHw-nW-StV">
+                                        <rect key="frame" x="0.0" y="103.5" width="320" height="216"/>
+                                    </pickerView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="l3f-Tn-Cca">
+                                        <rect key="frame" x="70" y="402.5" width="180.5" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ascending Sort:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UD8-dw-Ned">
+                                                <rect key="frame" x="0.0" y="0.0" width="121.5" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ida-8A-8GL">
+                                                <rect key="frame" x="131.5" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="sortDirectionChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="3T2-K3-JUc"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Qz-bX-ME4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="0q2-ot-mdn"/>
+                            <constraint firstItem="6Qz-bX-ME4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xSp-SS-a1B"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" selectedImage="gearshape" id="we2-fh-iqz" userLabel="Settings"/>
+                    <connections>
+                        <outlet property="pckSortField" destination="uHw-nW-StV" id="lQa-NT-Dix"/>
+                        <outlet property="swAscending" destination="Ida-8A-8GL" id="Ky2-9z-Q7G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -266,6 +307,7 @@
                             <constraint firstItem="nsO-Wm-iIz" firstAttribute="trailing" secondItem="5dx-bh-IXp" secondAttribute="trailing" id="jUp-SO-8bL"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="GsG-bo-BZh"/>
                     <navigationItem key="navigationItem" id="jUi-eu-5hS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EST-pS-VJN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
