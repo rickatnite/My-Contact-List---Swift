@@ -29,9 +29,9 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         //set the UI based on the values in userDefaults
         let settings = UserDefaults.standard
         //sets the value of the Switch based on the value in the sortDirectionAscending key by calling the setOn: method on the Switch
-        swAscending.setOn(settings.bool(forKey: "sortDirectionAscending"), animated: true)
+        swAscending.setOn(settings.bool(forKey: Constants.kSortDirectionAscending), animated: true)
         //read the sortField value into a constant
-        let sortField = settings.string(forKey: "sortField")
+        let sortField = settings.string(forKey: Constants.kSortField)
         var i = 0
         //the Picker View is updated by telling it which number row to select, so the for loop goes through the sortOrderItems array
         for field in sortOrderItems {
@@ -50,7 +50,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     //store the value of the switch
     @IBAction func sortDirectionChanged(_ sender: Any) {
         let settings = UserDefaults.standard
-        settings.set(swAscending.isOn, forKey: "sortDirectionAscending")
+        settings.set(swAscending.isOn, forKey: Constants.kSortDirectionAscending)
         settings.synchronize()
     }
     
@@ -86,7 +86,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let sortField = sortOrderItems[row]
         let settings = UserDefaults.standard
-        settings.set(sortField, forKey: "sortField")
+        settings.set(sortField, forKey: Constants.kSortField)
         settings.synchronize()
         print("Chosen item: \(sortOrderItems[row])")
     }

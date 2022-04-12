@@ -19,18 +19,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //check whether a value is already stored with two specific keys in the settings object
         //checks if the sortField has been set. if not, store City as the value in sortField
-        if settings.string(forKey: "sortField") == nil {
-            settings.set("City", forKey: "sortField")
+        if settings.string(forKey: Constants.kSortField) == nil {
+            settings.set("City", forKey: Constants.kSortField)
         }
         //repeats the same check for the sort direction. If no value is stored, it defaults to true
-        if settings.string(forKey: "sortDirectionAscending") == nil {
-            settings.set(true, forKey: "sortDirectionAscending")
+        if settings.string(forKey: Constants.kSortDirectionAscending) == nil {
+            settings.set(true, forKey: Constants.kSortDirectionAscending)
         }
         //ensures that any changes are saved back to the settings file, and write the values of the two settings fields to NSLog.
         //This shows how to retrieve a Boolean value using the bool(:ForKey:) method and retrieve a string by using string(:ForKey:).
         settings.synchronize()
-        print("Sort field: \(settings.string(forKey: "sortField")!)")
-        print("Sort direction: \(settings.bool(forKey: "sortDirectionAscending"))")
+        //print("Sort field: \(settings.string(forKey: Constants.kSortField)!)")
+        //print("Sort direction: \(settings.bool(forKey: Constants.kSortDirectionAscending))")
+        
+        NSLog("Sort field: %@", settings.string(forKey: Constants.kSortField)!)
+        NSLog("Sort direction: \(settings.bool(forKey: Constants.kSortDirectionAscending))")
+
+        
         return true
     }
 
