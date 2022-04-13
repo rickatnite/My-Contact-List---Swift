@@ -16,11 +16,20 @@ class DateViewController: UIViewController {
     //main controller may not set itself as a delegate of the Date Controller, so it is weak and optional type
     //optional is nil by default so no init method needed
     weak var delegate: DateControllerDelegate?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        let saveButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveDate))
+        self.navigationItem.rightBarButtonItem = saveButton
+        self.title = "Pick Birthdate"
+    }
+    
+    
+    @objc func saveDate() {
+        self.delegate?.dateChanged(date: dtpDate.date)
+        self.navigationController?.popViewController(animated: true)
     }
     
 

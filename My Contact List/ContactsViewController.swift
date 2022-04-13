@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class ContactsViewController: UIViewController, UITextFieldDelegate {
+class ContactsViewController: UIViewController, UITextFieldDelegate, DateControllerDelegate {
     
     var currentContact: Contact? //to hold information about the Contact entity being edited
     let appDelegate = UIApplication.shared.delegate as! AppDelegate //a reference to the App Delegate that will be used to access the Core Data functionality
@@ -174,6 +174,28 @@ class ContactsViewController: UIViewController, UITextFieldDelegate {
         appDelegate.saveContext() //saves the object to the database
         sgmtEditMode.selectedSegmentIndex = 0
         changeEditMode(self) //change the scene from editing to viewing mode
+    }
+    
+    
+    
+    func dateChanged(date: Date) {
+        if currentContact == nil { //checks if the currentContact variable is populated, since currentContact is optional
+            let context = appDelegate.persistentContainer.viewContext
+            currentContact = Contact(context: context)
+        }
+        currentContact?.birthday = date //sets the date that was passed in from the calling controller to the birthday property in currentContact
+        let formatter = DateFormatter() //set up a date formatter
+        formatter.dateStyle = .short //format the date using the short style
+        lblBirthdate.text = formatter.string(from: date) //the formatted date is set on the label on the Contacts screen
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "segueContactDate") { //checks to see which segue initiated the call to the method - "segueContactDate" is a unique identifier of the segue
+            let dateController = segue.destination as! DateViewController //reference to the destination View Controller
+            dateController.delegate = self //sets the delegate for the Date Controller to be the Contacts Controller (self).
+            //This allows the Date Controller to call the dateChanged method in the Contacts Controller.
+        }
     }
     
     
