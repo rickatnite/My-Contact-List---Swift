@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -54,5 +55,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    //MARK: - Core Data Stack
+    
+    lazy var persistentContainer: NSPersistentContainer = { //a wrapper around the actual data store - creates and returns container with loaded store for the app
+        let container = NSPersistentContainer(name: "MyContactListModel") //the container contains the name of the Core Data datamodel
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+            //replace with appropriate error handling code
+                //fatalError generates a crash log and terminates app
+                //for development only - replace for a shipped version of app
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+        }
+    })
+        return container
+    } ()
+    
+    //MARK: - Core Data Saving Support
+    
+    func saveContext () { //called whenever data changes need to be saved to the persistent container
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
 }
 
