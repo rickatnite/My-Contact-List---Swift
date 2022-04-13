@@ -309,6 +309,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="GsG-bo-BZh"/>
                     <navigationItem key="navigationItem" id="jUi-eu-5hS"/>
+                    <connections>
+                        <outlet property="dtpDate" destination="nsO-Wm-iIz" id="ZyR-pI-Lnb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EST-pS-VJN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -16,7 +16,7 @@ class DateViewController: UIViewController {
     //main controller may not set itself as a delegate of the Date Controller, so it is weak and optional type
     //optional is nil by default so no init method needed
     weak var delegate: DateControllerDelegate?
-    
+    @IBOutlet weak var dtpDate: UIDatePicker!
 
     override func viewDidLoad() {
         super.viewDidLoad()
