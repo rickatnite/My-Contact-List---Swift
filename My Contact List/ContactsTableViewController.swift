@@ -29,8 +29,23 @@ class ContactsTableViewController: UITableViewController {
     
     
     func loadDataFromDatabase() {
+        //read settings to enable sorting
+        let settings = UserDefaults.standard
+        let sortField = settings.string(forKey: Constants.kSortField)
+        let sortAscending = settings.bool(forKey: Constants.kSortDirectionAscending)
+        
+        //setup core data context
         let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSManagedObject>(entityName: "Contact") //defines what data is to be pulled from CoreData by creating a NSFetchRequest object specifying that Contact entities will be retrieved
+        
+        //setup request
+        let request = NSFetchRequest<NSManagedObject>(entityName: "Contact") //defines what data to pull from CoreData with NSFetchRequest object specifying Contact entities
+        
+        //specify sorting - NSSortDescriptor contains instructions on how to order objects - by passing sort field and order, the fetch request will use these instructions to sort
+        let sortDescriptor = NSSortDescriptor(key: sortField, ascending: sortAscending)
+        let sortDescriptorArray = [sortDescriptor] //can sort by multiple fields by adding more sort descriptors to array
+        request.sortDescriptors = sortDescriptorArray
+        
+        //execute request
         do {
             contacts = try context.fetch(request) //executes the fetch and stores the results in the contacts array
         } catch let error as NSError {

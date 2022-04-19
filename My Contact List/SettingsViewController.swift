@@ -12,7 +12,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var swAscending: UISwitch!
 
     //array to store the items that will show up in the Picker View
-    let sortOrderItems: Array<String> = ["Contact Name", "City", "Birthday"]
+    let sortOrderItems: Array<String> = ["contactName", "city", "birthday"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
