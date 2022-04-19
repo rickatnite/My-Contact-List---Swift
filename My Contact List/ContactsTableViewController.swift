@@ -16,14 +16,17 @@ class ContactsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadDataFromDatabase() //When the view controller is first loaded into memory, the contacts array is populated with data
+        //loadDataFromDatabase() //When the view controller is first loaded into memory, the contacts array is populated with data
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadDataFromDatabase() //ensures that the data is reloaded from the database
+        tableView.reloadData() //reloads the data in the table itself
+    }
+    
     
     func loadDataFromDatabase() {
         let context = appDelegate.persistentContainer.viewContext
@@ -56,6 +59,27 @@ class ContactsTableViewController: UITableViewController {
         return cell
     }
 
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedContact = contacts[indexPath.row] as? Contact
+        let name = selectedContact!.contactName!
+        let actionHandler = { (action: UIAlertAction!) -> Void in //sets up an action handler that contains the code to execute when the user taps the Show Details button
+            //self.performSegue(withIdentifier: "EditContact", sender: tableView.cellForRow(at: indexPath)) //execute a segue by using the storyboard identifier
+            let storyboard = UIStoryboard(name: "Main", bundle: nil) //reference to the storyboard
+            let controller = storyboard.instantiateViewController(withIdentifier: "ContactController") as? ContactsViewController //instance of the view controller using identifier
+            controller?.currentContact = selectedContact //controller is previously cast as a ContactsViewcontroller in order to set the selected contact
+            self.navigationController?.pushViewController(controller!, animated: true) //uses the navigation controller to push the view controller onto the navigation stack
+        }
+        
+        let alertController = UIAlertController(title: "Contact selected", message: "Selected row: \(indexPath.row) (\(name))", preferredStyle: .alert)
+        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let actionDetails = UIAlertAction(title: "Show Details", style: .default, handler: actionHandler) //when user taps Show Details, the code in actionHandler is executed
+        
+        //adds the two buttons to the Alert Controller
+        alertController.addAction(actionCancel)
+        alertController.addAction(actionDetails)
+        present(alertController, animated: true, completion: nil) //displays the controller
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -65,17 +89,27 @@ class ContactsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let contact = contacts[indexPath.row] as? Contact //retrieves the object for the selected row
+            let context = appDelegate.persistentContainer.viewContext
+            context.delete(contact!) //deletes the object from the context
+            do {
+                try context.save()
+            } catch {
+                fatalError("Error saving context: \(error)")
+            }
+            loadDataFromDatabase() //reloads the data from the database into the contacts array
+            //could also redefine the contacts variable to be of type NSMutableArray to delete the individual object directly from the array
+            tableView.deleteRows(at: [indexPath], with: .fade) //removes the row from the table
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
@@ -108,3 +142,9 @@ class ContactsTableViewController: UITableViewController {
     
 
 }
+
+
+
+// Uncomment the following line to preserve selection between presentations
+// self.clearsSelectionOnViewWillAppear = false
+
