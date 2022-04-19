@@ -57,7 +57,7 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
         //if no currentContact object, the code first uses the appDelegate variable to get a reference to the Managed Object Context
         //(which is essentially the file that stores the data)
         //This is used in the next line, which instantiates the currentContact variable by inserting it as a new object into the context.
-        if currentContact == nil {
+            if currentContact == nil {
             let context = appDelegate.persistentContainer.viewContext
             currentContact = Contact(context: context)
         }
