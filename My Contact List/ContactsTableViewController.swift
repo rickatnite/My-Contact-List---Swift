@@ -6,15 +6,17 @@
 //
 
 import UIKit
+import CoreData
 
 class ContactsTableViewController: UITableViewController {
 
-    let contacts = ["Jim", "John", "Dana", "Rosie", "Justin", "Jeremy", "Sarah", "Matt", "Joe", "Donald", "Jeff"]
-
-
+    //let contacts = ["Jim", "John", "Dana", "Rosie", "Justin", "Jeremy", "Sarah", "Matt", "Joe", "Donald", "Jeff"]
+    var contacts: [NSManagedObject] = [] //hold the Contact objects that will be retrieved from CoreData
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate //sets up a class variable for referencing the app delegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadDataFromDatabase() //When the view controller is first loaded into memory, the contacts array is populated with data
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -22,11 +24,20 @@ class ContactsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    func loadDataFromDatabase() {
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSManagedObject>(entityName: "Contact") //defines what data is to be pulled from CoreData by creating a NSFetchRequest object specifying that Contact entities will be retrieved
+        do {
+            contacts = try context.fetch(request) //executes the fetch and stores the results in the contacts array
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
@@ -38,7 +49,9 @@ class ContactsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsCell", for: indexPath)
         // unique identifier for all cells in the table that are set up in the same way so the objects can be reused when the cell scrolls off the screen
-        cell.textLabel?.text = contacts[indexPath.row] //textLabel property sets the text that will show up on screen - data is pulled from contacts with row number as the index
+        let contact = contacts[indexPath.row] as? Contact //retreives contact object with row number as the index
+        cell.textLabel?.text = contact?.contactName //sets the textLabel property to the contactName
+        cell.detailTextLabel?.text = contact?.city //sets the detailTextLabel to the city for contact - detail is subtitle text
         return cell
     }
 
