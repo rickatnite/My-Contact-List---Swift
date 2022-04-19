@@ -52,6 +52,7 @@ class ContactsTableViewController: UITableViewController {
         let contact = contacts[indexPath.row] as? Contact //retreives contact object with row number as the index
         cell.textLabel?.text = contact?.contactName //sets the textLabel property to the contactName
         cell.detailTextLabel?.text = contact?.city //sets the detailTextLabel to the city for contact - detail is subtitle text
+        cell.accessoryType = UITableViewCell.AccessoryType .detailDisclosureButton //adds accessory button to cell
         return cell
     }
 
@@ -91,14 +92,19 @@ class ContactsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "EditContact" { //checks to see if the segue matches the identifier in the storyboard
+            let contactController = segue.destination as? ContactsViewController //gets a reference to the Contact editing screen view controller as the destination for the segue
+            let selectedRow = self.tableView.indexPath(for: sender as! UITableViewCell)?.row //which row was selected in the table
+            let selectedContact = contacts[selectedRow!] as? Contact //reference to the corresponding Contact object from the contacts array
+            contactController?.currentContact = selectedContact! //assigns the selected contact to the currentContact property in ContactsViewController
+            //allows that controller to populate the user interface with the selected Contact
+        }
     }
-    */
+    
 
 }

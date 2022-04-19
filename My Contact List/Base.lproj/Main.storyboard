@@ -285,7 +285,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oj7-Gm-gZo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1639.1304347826087" y="-419.19642857142856"/>
+            <point key="canvasLocation" x="2745" y="-419"/>
         </scene>
         <!--Birthdate-->
         <scene sceneID="mjj-p2-rxu">
@@ -315,7 +315,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EST-pS-VJN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2377" y="-419"/>
+            <point key="canvasLocation" x="3639" y="-419"/>
         </scene>
         <!--Contacts-->
         <scene sceneID="J7Z-eV-Je2">
@@ -349,6 +349,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="oQ4-ua-9wW" kind="show" identifier="EditContact" trigger="accessoryAction" id="4ug-IA-uNE"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -366,7 +369,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezb-cm-1EQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2799" y="520"/>
+            <point key="canvasLocation" x="1754" y="-419"/>
         </scene>
         <!--NavBar-->
         <scene sceneID="4yR-o8-KYz">
@@ -407,6 +410,9 @@
             <point key="canvasLocation" x="728.98550724637687" y="-419.19642857142856"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="4ug-IA-uNE"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="map" catalog="system" width="128" height="110"/>

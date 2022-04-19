@@ -34,13 +34,36 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if currentContact != nil { //make sure the currentContact object is instantiated
+            //populate all the textfields
+            txtName.text = currentContact!.contactName
+            txtAddress.text = currentContact!.streetAddress
+            txtCity.text = currentContact!.city
+            txtState.text = currentContact!.state
+            txtZip.text = currentContact!.zipCode
+            txtPhone.text = currentContact!.phoneNumber
+            txtCell.text = currentContact!.cellNumber
+            txtEmail.text = currentContact!.email
+            //exclamation marks are needed because currentContact is optional
+            //since currentContact does contain an object, the exclamation mark implicitly unwraps the value
+            
+            //set up a DateFormatter to format the date to short format
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
+            
+            if currentContact!.birthday != nil { //checks that the birthday property is set to a value
+                lblBirthdate.text = formatter.string(from: currentContact!.birthday as! Date) //formats and assigns to the label
+            }
+        }
+        
         changeEditMode(self) //Calls the changeEditMode method to ensure that the controls are set properly when the view loads.
         
         //text fields to array
-        let textField: [UITextField] = [txtName, txtAddress, txtCity, txtState, txtZip, txtPhone, txtCell, txtEmail]
+        let textFields: [UITextField] = [txtName, txtAddress, txtCity, txtState, txtZip, txtPhone, txtCell, txtEmail]
         
         //loop to go over all textfields in array
-        for textfield in textField {
+        for textfield in textFields {
             //each time this is executed, it adds a listener (target) to the text field.
             //self specifies the object that contains the method that is called when the event occurs that the listener is listening for.
             //the method will be in the current class, so we use self.
