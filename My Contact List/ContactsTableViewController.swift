@@ -68,9 +68,34 @@ class ContactsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsCell", for: indexPath)
         // unique identifier for all cells in the table that are set up in the same way so the objects can be reused when the cell scrolls off the screen
         let contact = contacts[indexPath.row] as? Contact //retreives contact object with row number as the index
-        cell.textLabel?.text = contact?.contactName //sets the textLabel property to the contactName
-        cell.detailTextLabel?.text = contact?.city //sets the detailTextLabel to the city for contact - detail is subtitle text
+        
+        //cell.textLabel?.text = contact?.contactName //sets the textLabel property to the contactName
+        //cell.detailTextLabel?.text = contact?.city //sets the detailTextLabel to the city for contact - detail is subtitle text
         cell.accessoryType = UITableViewCell.AccessoryType .detailDisclosureButton //adds accessory button to cell
+        
+        //exercise 4:
+        //let bday = (contact?.birthday)!
+        //let df = DateFormatter()
+        //let day = df.string(from: bday)
+        
+        let bday = (contact?.birthday)!
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        formatter.locale = NSLocale(localeIdentifier: "en_US") as Locale
+        let strdate = formatter.string(from: bday as Date)
+        
+        cell.textLabel?.text = (contact?.contactName)! + " from " + (contact?.city)!
+        cell.detailTextLabel?.text = "Born on: \(strdate)"
+
+        
+
+        
+        
+        
+       // cell.textLabel?.text = "\(contact?.contactName) from \(contact?.city)"
+       // cell.detailTextLabel?.text = "Born on: \(contact?.birthday)"
+        
+        
         return cell
     }
 
