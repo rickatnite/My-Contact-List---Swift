@@ -15,6 +15,7 @@
 		182D6EF727FA291E008A6C5F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D6EF627FA291E008A6C5F /* SettingsViewController.swift */; };
 		186AA599280F4A0C004A581E /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186AA598280F4A0C004A581E /* ContactsTableViewController.swift */; };
 		18A6F80B2805EC3B004B5ACC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A6F80A2805EC3B004B5ACC /* Constants.swift */; };
+		18D553AD281740BE00AEED44 /* MapPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D553AC281740BE00AEED44 /* MapPoint.swift */; };
 		18D7A97027F539690001F2E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7A96F27F539690001F2E3 /* AppDelegate.swift */; };
 		18D7A97227F539690001F2E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7A97127F539690001F2E3 /* SceneDelegate.swift */; };
 		18D7A97427F539690001F2E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7A97327F539690001F2E3 /* ViewController.swift */; };
@@ -32,6 +33,7 @@
 		182D6EF627FA291E008A6C5F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		186AA598280F4A0C004A581E /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		18A6F80A2805EC3B004B5ACC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		18D553AC281740BE00AEED44 /* MapPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPoint.swift; sourceTree = "<group>"; };
 		18D7A96C27F539690001F2E3 /* My Contact List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Contact List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D7A96F27F539690001F2E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18D7A97127F539690001F2E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				18D7A97D27F5396B0001F2E3 /* Info.plist */,
 				182D6EF227FA28FB008A6C5F /* ContactsViewController.swift */,
 				182D6EF427FA290E008A6C5F /* MapViewController.swift */,
+				18D553AC281740BE00AEED44 /* MapPoint.swift */,
 				182D6EF627FA291E008A6C5F /* SettingsViewController.swift */,
 				18A6F80A2805EC3B004B5ACC /* Constants.swift */,
 				182B15D828075C83007C3A5D /* DateViewController.swift */,
@@ -167,6 +170,7 @@
 				186AA599280F4A0C004A581E /* ContactsTableViewController.swift in Sources */,
 				18D7A97027F539690001F2E3 /* AppDelegate.swift in Sources */,
 				182D6EF527FA290E008A6C5F /* MapViewController.swift in Sources */,
+				18D553AD281740BE00AEED44 /* MapPoint.swift in Sources */,
 				18A6F80B2805EC3B004B5ACC /* Constants.swift in Sources */,
 				18D7A97227F539690001F2E3 /* SceneDelegate.swift in Sources */,
 				182B15D72807542E007C3A5D /* MyContactListModel.xcdatamodeld in Sources */,
