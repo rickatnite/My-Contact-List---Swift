@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class LocationDemoViewController: UIViewController {
+class LocationDemoViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var txtStreet: UITextField!
     @IBOutlet weak var txtCity: UITextField!
@@ -22,6 +22,8 @@ class LocationDemoViewController: UIViewController {
     @IBOutlet weak var lblAltitudeAccuracy: UILabel!
     
     lazy var geoCoder = CLGeocoder()
+    var locationManager: CLLocationManager!
+
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
@@ -66,7 +68,23 @@ class LocationDemoViewController: UIViewController {
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
-
+        
+        //location manager setup
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization() // ask for permission to use location - must match permission req in plist
+    }
+    
+    //called when location permission status changes
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        
+        //check for what the permission was changed to
+        if status == .authorizedWhenInUse {
+            print("Permission granted")
+        }
+        else {
+            print("Permission NOT granted")
+        }
     }
     
 
