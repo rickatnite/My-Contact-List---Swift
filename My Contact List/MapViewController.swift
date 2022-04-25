@@ -16,10 +16,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var locationManager: CLLocationManager!
     var contacts:[Contact] = []
 
-    //use find me button for user tracking - zooms to user location on click
+    //use find me button for user tracking - zooms to user locations on click
     @IBAction func findUser(_ sender: Any) {
-        mapView.showsUserLocation = true
-        mapView.setUserTrackingMode(.follow, animated: true)
+        mapView.showAnnotations(mapView.annotations, animated: true) //cant use in viewWillAppear because it is called before geocoding is completed
+        //mapView.showsUserLocation = true
+        //mapView.setUserTrackingMode(.follow, animated: true)
     }
     
     
