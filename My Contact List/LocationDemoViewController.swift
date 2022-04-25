@@ -58,9 +58,21 @@ class LocationDemoViewController: UIViewController, CLLocationManagerDelegate {
     }
 
    
-    
+    //location manager started when user presses device coordinates button
     @IBAction func deviceCoordinates(_ sender: Any) {
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters //sets desired accuracy - use least accurate option needed to function (to conserve resources)
+        locationManager.distanceFilter = 100 //indicates the distance in meters the device has to move before an update location event is generated
+        locationManager.startUpdatingLocation() //starts the location manager running and updating the location
+        locationManager.startUpdatingHeading() //report on changes to heading (compass) information
     }
+    
+    
+    //called when another view moves to the foreground
+    override func viewDidDisappear(_ animated: Bool) {
+        locationManager.stopUpdatingLocation()
+        locationManager.stopUpdatingHeading()
+    } //location manager stops when view disappears to conserve battery
+
     
     
     override func viewDidLoad() {
@@ -86,6 +98,68 @@ class LocationDemoViewController: UIViewController, CLLocationManagerDelegate {
             print("Permission NOT granted")
         }
     }
+    
+    
+    //called whenever location manager updates device location
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last { //get most recent location from array
+            let eventDate = location.timestamp //get time stamp for location
+            let howRecent = eventDate.timeIntervalSinceNow //check time interval between now and then
+            if Double(howRecent) < 15.0 { //convert from TimeInterval type to double and check that update time is less that 15sec
+                //update ui with refreshed coordinates
+                let coordinate = location.coordinate
+                lblLongitude.text = String(format: "%g\u{00B0}", coordinate.longitude)
+                lblLatitude.text = String(format: "%g\u{00B0}", coordinate.latitude)
+                lblLocationAccuracy.text = String(format: "%gm", location.horizontalAccuracy) //get accuracy from radius in meter of circle the device is within
+                lblAltitude.text = String(format: "%gm", location.altitude) //altitude in meters above/below sea level
+                lblAltitudeAccuracy.text = String(format: "%gm", location.verticalAccuracy) //accuracy in meters to this number
+
+            }
+        }
+    }
+    
+    
+    
+    //call to get heading/compass info for device
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        if newHeading.headingAccuracy > 0 { //check accuracy for validity
+            let theHeading = newHeading.trueHeading //specify true heading over magnetic heading
+            var direction: String
+            switch theHeading { //set compass heading based on heading in degrees
+                //less than signs indicate the interval goes from the lower value up to but not including the upper value
+            case 225..<315:
+                direction = "W"
+            case 135..<225:
+                direction = "S"
+            case 45..<135:
+                direction = "E"
+            default:
+                direction = "N"
+            }
+            
+            //update labels with accuracy and heading info
+            lblHeading.text = String(format: "%g\u{00B0} (%@)", theHeading, direction)
+            lblHeadingAccuracy.text = String(format: "%g\u{00B0}", newHeading.headingAccuracy) //heading reported as number of degrees off in either direction
+        }
+    }
+    
+    
+    //location manager error handling
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        
+        //gets raw value (bool) for the denied property, then uses conditional assignment statement to assign one of two literal strings to the errorType variable
+        let errorType = error._code == CLError.denied.rawValue ? "Location Permission Denied" : "Unknown Error" //if location services turned off
+        
+        //creates an alert view with error type as title and raw error msg
+        let alertController = UIAlertController(title: "Error Getting Location: \(errorType)", message: "Error Message: \(error.localizedDescription))", preferredStyle: .alert)
+        let actionOK = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(actionOK)
+        
+        //displays alert controller
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    
     
 
     /*
