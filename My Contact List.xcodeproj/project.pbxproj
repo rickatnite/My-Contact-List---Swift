@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181DF74028163DB3002E6C1C /* LocationDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181DF73F28163DB3002E6C1C /* LocationDemoViewController.swift */; };
 		182B15D72807542E007C3A5D /* MyContactListModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 182B15D52807542E007C3A5D /* MyContactListModel.xcdatamodeld */; };
 		182B15D928075C83007C3A5D /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B15D828075C83007C3A5D /* DateViewController.swift */; };
 		182D6EF327FA28FB008A6C5F /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D6EF227FA28FB008A6C5F /* ContactsViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		181DF73F28163DB3002E6C1C /* LocationDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDemoViewController.swift; sourceTree = "<group>"; };
 		182B15D62807542E007C3A5D /* MyContactListModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyContactListModel.xcdatamodel; sourceTree = "<group>"; };
 		182B15D828075C83007C3A5D /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 		182D6EF227FA28FB008A6C5F /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				18D7A97127F539690001F2E3 /* SceneDelegate.swift */,
 				18D7A97327F539690001F2E3 /* ViewController.swift */,
 				18D7A97527F539690001F2E3 /* Main.storyboard */,
+				181DF73F28163DB3002E6C1C /* LocationDemoViewController.swift */,
 				186AA598280F4A0C004A581E /* ContactsTableViewController.swift */,
 				18D7A97827F5396B0001F2E3 /* Assets.xcassets */,
 				18D7A97A27F5396B0001F2E3 /* LaunchScreen.storyboard */,
@@ -169,6 +172,7 @@
 				182B15D72807542E007C3A5D /* MyContactListModel.xcdatamodeld in Sources */,
 				182B15D928075C83007C3A5D /* DateViewController.swift in Sources */,
 				182D6EF727FA291E008A6C5F /* SettingsViewController.swift in Sources */,
+				181DF74028163DB3002E6C1C /* LocationDemoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

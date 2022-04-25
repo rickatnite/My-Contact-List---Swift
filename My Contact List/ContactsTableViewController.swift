@@ -14,6 +14,7 @@ class ContactsTableViewController: UITableViewController {
     var contacts: [NSManagedObject] = [] //hold the Contact objects that will be retrieved from CoreData
     let appDelegate = UIApplication.shared.delegate as! AppDelegate //sets up a class variable for referencing the app delegate
     
+    //executed once when the controller is first instantiated
     override func viewDidLoad() {
         super.viewDidLoad()
         //loadDataFromDatabase() //When the view controller is first loaded into memory, the contacts array is populated with data
@@ -22,6 +23,7 @@ class ContactsTableViewController: UITableViewController {
     }
     
     
+    //executed just before the view is displayed
     override func viewWillAppear(_ animated: Bool) {
         loadDataFromDatabase() //ensures that the data is reloaded from the database
         tableView.reloadData() //reloads the data in the table itself
@@ -70,30 +72,27 @@ class ContactsTableViewController: UITableViewController {
         let contact = contacts[indexPath.row] as? Contact //retreives contact object with row number as the index
         
         //cell.textLabel?.text = contact?.contactName //sets the textLabel property to the contactName
-        //cell.detailTextLabel?.text = contact?.city //sets the detailTextLabel to the city for contact - detail is subtitle text
+        //cell.detailTextLabel?.text = contact?.city //sets the detailTextLabel to the city for contact
         cell.accessoryType = UITableViewCell.AccessoryType .detailDisclosureButton //adds accessory button to cell
         
-        //exercise 4:
-        //let bday = (contact?.birthday)!
-        //let df = DateFormatter()
-        //let day = df.string(from: bday)
         
-        let bday = (contact?.birthday)!
+        
+
+        //exercise 4:
+
+
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy"
+        formatter.dateFormat = "MMM dd, yyyy"
         formatter.locale = NSLocale(localeIdentifier: "en_US") as Locale
-        let strdate = formatter.string(from: bday as Date)
+        let bday = (contact?.birthday)!
+        let date = formatter.string(from: bday as Date)
         
         cell.textLabel?.text = (contact?.contactName)! + " from " + (contact?.city)!
-        cell.detailTextLabel?.text = "Born on: \(strdate)"
-
-        
-
-        
+        cell.detailTextLabel?.text = "Born on: \(date)"
+        // cell.textLabel?.text = "\(contact?.contactName) from \(contact?.city)"
+        // cell.detailTextLabel?.text = "Born on: \(contact?.birthday)"
         
         
-       // cell.textLabel?.text = "\(contact?.contactName) from \(contact?.city)"
-       // cell.detailTextLabel?.text = "Born on: \(contact?.birthday)"
         
         
         return cell
@@ -114,6 +113,8 @@ class ContactsTableViewController: UITableViewController {
         let alertController = UIAlertController(title: "Contact selected", message: "Selected row: \(indexPath.row) (\(name))", preferredStyle: .alert)
         let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let actionDetails = UIAlertAction(title: "Show Details", style: .default, handler: actionHandler) //when user taps Show Details, the code in actionHandler is executed
+        
+        
         
         //adds the two buttons to the Alert Controller
         alertController.addAction(actionCancel)
@@ -170,6 +171,7 @@ class ContactsTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    //passes the selected Contact from the table
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditContact" { //checks to see if the segue matches the identifier in the storyboard
             let contactController = segue.destination as? ContactsViewController //gets a reference to the Contact editing screen view controller as the destination for the segue

@@ -18,13 +18,15 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         super.viewDidLoad()
 
         //SettingsViewController is the data source for the Picker View
-        //the View Controller conforms to UIPickerViewDataSource.
+        //the View Controller conforms to UIPickerViewDataSource
         pckSortField.dataSource = self;
-        //View Controller is the delegate for the Picker View, so whenever actions are taken on the Picker View, specific methods are called in the View Controller.
-        //This works because the View Controller conforms to UIPickerViewDelegate.
+        //View Controller is the delegate for the Picker View
+        //whenever actions are taken on the Picker View, specific methods are called in the View Controller
+        //the View Controller conforms to UIPickerViewDelegate
         pckSortField.delegate = self;
     }
     
+    //executed just before the view is displayed
     override func viewWillAppear(_ animated: Bool) {
         //set the UI based on the values in userDefaults
         let settings = UserDefaults.standard
