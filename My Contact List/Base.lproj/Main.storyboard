@@ -91,57 +91,60 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="zED-sb-h5X">
-                                <rect key="frame" x="82" y="188.5" width="250" height="519.5"/>
+                                <rect key="frame" x="82" y="219.5" width="250" height="457.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GCa-3p-JH1">
-                                        <rect key="frame" x="0.0" y="0.0" width="250" height="196"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="134"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Street Address" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fcq-l7-osC">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Street Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fcq-l7-osC">
                                                 <rect key="frame" x="0.0" y="0.0" width="250" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="Kzf-S6-ZuW"/>
                                                     <constraint firstAttribute="height" constant="30" id="QNg-Fr-7x6"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="address-line1"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="City" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d0Y-nX-oCA">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d0Y-nX-oCA">
                                                 <rect key="frame" x="0.0" y="40" width="250" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="gVh-9X-L0K"/>
                                                     <constraint firstAttribute="width" constant="250" id="lLe-qY-CW4"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="address-level2"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="State" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EJg-hM-u70">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EJg-hM-u70">
                                                 <rect key="frame" x="0.0" y="80" width="250" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="jyX-iR-8xM"/>
                                                     <constraint firstAttribute="width" constant="250" id="wzY-4Q-O33"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="address-level1"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="13I-xu-Vh2">
-                                                <rect key="frame" x="0.0" y="142" width="176" height="31"/>
+                                                <rect key="frame" x="0.0" y="124" width="176" height="0.0"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Address to Coordinates"/>
                                                 <connections>
-                                                    <action selector="addressToCoordinates:" destination="YjS-oB-8oV" eventType="touchUpInside" id="dLo-o9-e7L"/>
+                                                    <action selector="addressToCoordinates:" destination="YjS-oB-8oV" eventType="touchUpInside" id="7xZ-7N-4yW"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="qpa-jA-zSH">
-                                                <rect key="frame" x="13" y="183" width="150.5" height="31"/>
+                                                <rect key="frame" x="13" y="134" width="150.5" height="0.0"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Device Coordinates"/>
+                                                <connections>
+                                                    <action selector="deviceCoordinates:" destination="YjS-oB-8oV" eventType="touchUpInside" id="R9d-Ip-r4a"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="To3-6U-tuG">
-                                        <rect key="frame" x="29.5" y="276" width="191" height="243.5"/>
+                                        <rect key="frame" x="29.5" y="214" width="191" height="243.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1Th-QS-x3u">
                                                 <rect key="frame" x="0.0" y="0.0" width="191" height="81.5"/>
@@ -318,16 +321,16 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="lblAltitude" destination="99e-Ns-9cD" id="onw-fL-qne"/>
-                        <outlet property="lblAltitudeAccuracy" destination="kFQ-i6-xwu" id="LSu-xm-48k"/>
-                        <outlet property="lblHeading" destination="XNu-QM-utH" id="WZh-Vp-Htg"/>
-                        <outlet property="lblHeadingAccuracy" destination="CCW-bc-NL8" id="v6C-LA-8Rr"/>
-                        <outlet property="lblLatitude" destination="zGP-FS-cRe" id="fJf-jl-oqn"/>
-                        <outlet property="lblLocationAccuracy" destination="Sfw-Ux-dMP" id="xIZ-wB-X0S"/>
-                        <outlet property="lblLongitude" destination="bFU-3f-35R" id="M65-d8-5Aq"/>
-                        <outlet property="txtCity" destination="d0Y-nX-oCA" id="Oh9-2F-NTs"/>
-                        <outlet property="txtState" destination="EJg-hM-u70" id="Hyb-ey-GCF"/>
-                        <outlet property="txtStreet" destination="Fcq-l7-osC" id="Usp-TZ-GKs"/>
+                        <outlet property="lblAltitude" destination="QYA-9U-yzy" id="EKR-H9-pDm"/>
+                        <outlet property="lblAltitudeAccuracy" destination="OxK-Zz-79P" id="pk9-ac-GWT"/>
+                        <outlet property="lblHeading" destination="Kgs-UD-oht" id="Qvg-pk-QsE"/>
+                        <outlet property="lblHeadingAccuracy" destination="xkh-pi-h4B" id="wzp-hf-eco"/>
+                        <outlet property="lblLatitude" destination="3MS-81-hoh" id="6hI-xd-V6s"/>
+                        <outlet property="lblLocationAccuracy" destination="8gC-35-FkD" id="i5C-wi-rId"/>
+                        <outlet property="lblLongitude" destination="Ifw-a4-op8" id="Sr0-EJ-ImE"/>
+                        <outlet property="txtCity" destination="d0Y-nX-oCA" id="KOO-8t-G3v"/>
+                        <outlet property="txtState" destination="EJg-hM-u70" id="tC7-yI-0gW"/>
+                        <outlet property="txtStreet" destination="Fcq-l7-osC" id="e84-Lh-pE5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C9y-xD-YVv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
