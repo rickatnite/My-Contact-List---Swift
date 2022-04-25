@@ -6,13 +6,47 @@
 //
 
 import UIKit
+import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
+    var locationManager: CLLocationManager!
+    
+    @IBOutlet weak var mapView: MKMapView!
+    
+    //use find me button for user tracking - zooms to user location on click
+    @IBAction func findUser(_ sender: Any) {
+        mapView.showsUserLocation = true
+        mapView.setUserTrackingMode(.follow, animated: true)
+    }
+    
+    
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        var span = MKCoordinateSpan() //span indicates how many degrees are visible on map to specify zoom level
+        span.latitudeDelta = 0.2 //lower span numbers allow more zooming in
+        span.longitudeDelta = 0.2 //decimals are needed for street level views
+        let viewRegion = MKCoordinateRegion(center: userLocation.coordinate, span: span) //uses span settings for zoom
+        mapView.setRegion(viewRegion, animated: true) //sets region based on location/span in previous line
+        
+        //alternative zoom approach which sets the view region to 5000m on either side of the user location
+        //zooms similarly to other appraoch, but you can specify the zoom level of the map
+        //disables the ability to zoom and pan the map when the device is being moved bc the method is called anytime the user location changes
+        //let viewRegion = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 5000, 5000)
+        
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //mapView.setUserTrackingMode(.follow, animated: true) //zooms to user location when map is displayed - too simplistic for this app
+        
+        mapView.delegate = self
 
-        // Do any additional setup after loading the view.
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+
     }
     
 
