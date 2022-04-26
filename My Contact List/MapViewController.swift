@@ -11,11 +11,24 @@ import CoreData
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
+    @IBOutlet weak var sgmtMapType: UISegmentedControl!
     @IBOutlet weak var mapView: MKMapView!
 
     var locationManager: CLLocationManager!
     var contacts:[Contact] = []
-
+    
+    @IBAction func mapTypeChanged(_ sender: Any) {
+        switch sgmtMapType.selectedSegmentIndex {
+        case 0:
+            mapView.mapType = .standard
+        case 1:
+            mapView.mapType = .hybrid
+        case 2:
+            mapView.mapType = .satellite
+        default: break
+        }
+    }
+    
     //use find me button for user tracking - zooms to user locations on click
     @IBAction func findUser(_ sender: Any) {
         mapView.showAnnotations(mapView.annotations, animated: true) //cant use in viewWillAppear because it is called before geocoding is completed

@@ -85,26 +85,41 @@
                                     <action selector="findUser:" destination="JJA-KG-wix" eventType="touchUpInside" id="Jip-0r-Aod"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="h86-9N-59Q">
+                                <rect key="frame" x="82" y="782" width="251" height="32"/>
+                                <segments>
+                                    <segment title="Standard"/>
+                                    <segment title="Hybrid"/>
+                                    <segment title="Satellite"/>
+                                </segments>
+                                <connections>
+                                    <action selector="mapTypeChanged:" destination="JJA-KG-wix" eventType="valueChanged" id="yNO-4I-9ls"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pI3-2b-7TE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="pI3-2b-7TE" firstAttribute="trailing" secondItem="XwP-F7-Qpu" secondAttribute="trailing" id="3vA-dY-XEr"/>
                             <constraint firstItem="FVu-0D-7CO" firstAttribute="leading" secondItem="pI3-2b-7TE" secondAttribute="leading" constant="20" id="8kM-WH-iAU"/>
+                            <constraint firstItem="pI3-2b-7TE" firstAttribute="trailing" secondItem="h86-9N-59Q" secondAttribute="trailing" constant="81" id="PMw-Af-peD"/>
+                            <constraint firstItem="h86-9N-59Q" firstAttribute="leading" secondItem="pI3-2b-7TE" secondAttribute="leading" constant="82" id="d1S-74-kLY"/>
                             <constraint firstItem="FVu-0D-7CO" firstAttribute="top" secondItem="pI3-2b-7TE" secondAttribute="top" constant="20" id="e0z-t4-dIy"/>
                             <constraint firstItem="pI3-2b-7TE" firstAttribute="bottom" secondItem="XwP-F7-Qpu" secondAttribute="bottom" id="izA-pu-JJ7"/>
                             <constraint firstItem="XwP-F7-Qpu" firstAttribute="top" secondItem="pI3-2b-7TE" secondAttribute="top" id="nfx-hG-dfA"/>
+                            <constraint firstItem="pI3-2b-7TE" firstAttribute="bottom" secondItem="h86-9N-59Q" secondAttribute="bottom" id="ngk-p6-14l"/>
                             <constraint firstItem="XwP-F7-Qpu" firstAttribute="leading" secondItem="pI3-2b-7TE" secondAttribute="leading" id="vmq-sv-cDo"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" selectedImage="map" id="oJu-Pk-Uqj" userLabel="Map"/>
                     <connections>
                         <outlet property="mapView" destination="XwP-F7-Qpu" id="N0j-ml-6wa"/>
+                        <outlet property="sgmtMapType" destination="h86-9N-59Q" id="CLm-a5-qUZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SG4-Cd-E2d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="730" y="275"/>
+            <point key="canvasLocation" x="728.98550724637687" y="273.88392857142856"/>
         </scene>
         <!--Location Demo View Controller-->
         <scene sceneID="Lk0-kc-Tzf">
