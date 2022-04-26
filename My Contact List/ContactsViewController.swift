@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class ContactsViewController: UIViewController, UITextFieldDelegate, DateControllerDelegate {
+class ContactsViewController: UIViewController, UITextFieldDelegate, DateControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var currentContact: Contact? //to hold information about the Contact entity being edited
     let appDelegate = UIApplication.shared.delegate as! AppDelegate //a reference to the App Delegate that will be used to access the Core Data functionality
@@ -25,6 +25,36 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var lblBirthdate: UILabel!
     @IBOutlet weak var btnChange: UIButton!
+    @IBOutlet weak var imgContactPicture: UIImageView!
+    
+    @IBAction func changePicture(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) { //check that camera exists
+            
+            //creates camera controller and sets properties
+            let cameraController = UIImagePickerController()
+            cameraController.sourceType = .camera
+            cameraController.cameraCaptureMode = .photo
+            cameraController.delegate = self
+            cameraController.allowsEditing = true //user allowed to edit image taken
+            self.present(cameraController, animated: true, completion: nil) //present camera controller to user
+        }
+    }
+    
+    //handles image picker returned - UIImagePickerController returns data in a String array called info
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.editedImage] as? UIImage { //conditionally assigns the returned image to an image constant
+            imgContactPicture.contentMode = .scaleAspectFit //keeps the proper aspect ratio
+            imgContactPicture.image = image //image assigned to the imgContactPicture control
+            
+            //save image - creates a Contact object if currentContact hasn’t been set and converts image to JPEG with no compression
+            if currentContact == nil {
+                let context = appDelegate.persistentContainer.viewContext
+                currentContact = Contact(context: context)
+            }
+            currentContact?.image = image.jpegData(compressionQuality: 1.0) //lower number to compress image
+        }
+        dismiss(animated: true, completion: nil) //dismisses the camera control so app becomes visible again
+    }
     
     
     //functions to detect if the keyboard has been displayed and
@@ -47,6 +77,11 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
             txtEmail.text = currentContact!.email
             //exclamation marks are needed because currentContact is optional
             //since currentContact does contain an object, the exclamation mark implicitly unwraps the value
+            
+            //retrieve the image from the database - takes image stored as Data and turns it into UIImage for display, and assigns to the image property of the ImageView control
+            if let imageData = currentContact?.image as? Data {
+            imgContactPicture.image = UIImage(data: imageData)
+            }
             
             //set up a DateFormatter to format the date to short format
             let formatter = DateFormatter()

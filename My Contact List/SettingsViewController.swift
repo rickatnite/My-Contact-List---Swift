@@ -49,6 +49,33 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        //display device info when settings opened
+        let device = UIDevice.current
+        print("Device Info: ")
+        print("Name: \(device.name)")
+        print("Model: \(device.model)")
+        print("System Name: \(device.systemName)")
+        print("System Version: \(device.systemVersion)")
+        print("Identifier: \(device.identifierForVendor!)") //unique app identifier
+        
+        //switch case for all ways the device can be oriented
+        let orientation: String
+        switch device.orientation {
+        case .faceDown: orientation = "Face Down"
+        case .landscapeLeft: orientation = "Landscape Left"
+        case .landscapeRight: orientation = "Lanscape Right"
+        case .portrait: orientation = "Portrait"
+        case .faceUp: orientation = "Face Up"
+        case .portraitUpsideDown: orientation = "Portrait Upside Down"
+        case .unknown: orientation = "Unknown Orientation"
+        @unknown default: fatalError()
+        }
+        print("Orientation: \(orientation)")
+    }
+    
+    
     //store the value of the switch
     @IBAction func sortDirectionChanged(_ sender: Any) {
         let settings = UserDefaults.standard

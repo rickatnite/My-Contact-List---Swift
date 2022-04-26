@@ -2,8 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCameraUsageDescription</key>
+	<string>App needs camera access to take photo</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>App needs access to Photo Library to add photo</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Uses location services to find Contact location in map</string>
+	<string>App needs location services to find Contact location in map</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

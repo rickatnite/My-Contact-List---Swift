@@ -398,7 +398,7 @@
                                 <rect key="frame" x="0.0" y="134" width="414" height="679"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="XdM-uX-ZdO">
-                                        <rect key="frame" x="8" y="0.0" width="394" height="304.5"/>
+                                        <rect key="frame" x="8" y="0.0" width="394" height="419.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jCY-Gm-Jzz">
                                                 <rect key="frame" x="0.0" y="0.0" width="394" height="34"/>
@@ -536,6 +536,26 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="0R0-Vi-WD1">
+                                                <rect key="frame" x="0.0" y="319.5" width="394" height="100"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pck-Tr-w6P">
+                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="100" id="1dW-Cu-onx"/>
+                                                            <constraint firstAttribute="width" constant="100" id="ZNO-jy-Swq"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1X-cr-B0w">
+                                                        <rect key="frame" x="143" y="34.5" width="251" height="31"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Take Picture"/>
+                                                        <connections>
+                                                            <action selector="changePicture:" destination="oQ4-ua-9wW" eventType="touchUpInside" id="OPv-Be-geu"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -564,6 +584,7 @@
                     <navigationItem key="navigationItem" title="Contact" id="3W6-Tb-C9L"/>
                     <connections>
                         <outlet property="btnChange" destination="ZEe-z6-GfQ" id="aKA-Xb-xnC"/>
+                        <outlet property="imgContactPicture" destination="pck-Tr-w6P" id="hYS-bV-uG4"/>
                         <outlet property="lblBirthdate" destination="FyQ-Ys-ONC" id="jO6-aP-MUE"/>
                         <outlet property="scrollView" destination="wLQ-bI-GP9" id="tof-yb-b6y"/>
                         <outlet property="sgmtEditMode" destination="aXb-T5-3PJ" id="W7w-Uo-Xdj"/>
@@ -579,7 +600,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oj7-Gm-gZo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2745" y="-419"/>
+            <point key="canvasLocation" x="2744.9275362318845" y="-419.19642857142856"/>
         </scene>
         <!--Birthdate-->
         <scene sceneID="mjj-p2-rxu">
