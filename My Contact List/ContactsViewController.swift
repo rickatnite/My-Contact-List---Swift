@@ -26,6 +26,7 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
     @IBOutlet weak var lblBirthdate: UILabel!
     @IBOutlet weak var btnChange: UIButton!
     @IBOutlet weak var imgContactPicture: UIImageView!
+    @IBOutlet weak var lblPhone: UILabel!
     
     @IBAction func changePicture(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.camera) { //check that camera exists
@@ -90,6 +91,10 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
             if currentContact!.birthday != nil { //checks that the birthday property is set to a value
                 lblBirthdate.text = formatter.string(from: currentContact!.birthday as! Date) //formats and assigns to the label
             }
+            
+            let longPress = UILongPressGestureRecognizer.init(target: self, action: #selector(callPhone(gesture:)))
+            lblPhone.addGestureRecognizer(longPress)
+
         }
         
         changeEditMode(self) //Calls the changeEditMode method to ensure that the controls are set properly when the view loads.
@@ -109,6 +114,16 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
         }
     }
     
+    @objc func callPhone(gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began { //check gesture state - began is called once for the long press
+            let number = txtPhone.text
+            if number!.count > 0 { //checks that number isn't blank
+                let url = NSURL(string: "telprompt://\(number!)") //NSURL object holds the number to call
+                UIApplication.shared.open(url as! URL, options: [:], completionHandler: nil) //calls phone number
+                print("Calling Phone Number: \(url!)")
+            }
+        }
+    }
     
     //updates the currentContact object with the values in all the TextFields
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {

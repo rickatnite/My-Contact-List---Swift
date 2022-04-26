@@ -461,7 +461,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="t8K-vV-orP">
                                                         <rect key="frame" x="0.0" y="0.0" width="182" height="62.5"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell Phone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVj-cE-3o3">
+                                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell Phone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVj-cE-3o3">
                                                                 <rect key="frame" x="0.0" y="0.0" width="182" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
@@ -586,6 +586,7 @@
                         <outlet property="btnChange" destination="ZEe-z6-GfQ" id="aKA-Xb-xnC"/>
                         <outlet property="imgContactPicture" destination="pck-Tr-w6P" id="hYS-bV-uG4"/>
                         <outlet property="lblBirthdate" destination="FyQ-Ys-ONC" id="jO6-aP-MUE"/>
+                        <outlet property="lblPhone" destination="xVj-cE-3o3" id="SJh-Ho-RuS"/>
                         <outlet property="scrollView" destination="wLQ-bI-GP9" id="tof-yb-b6y"/>
                         <outlet property="sgmtEditMode" destination="aXb-T5-3PJ" id="W7w-Uo-Xdj"/>
                         <outlet property="txtAddress" destination="Qho-SG-wMi" id="MVb-47-tQF"/>
